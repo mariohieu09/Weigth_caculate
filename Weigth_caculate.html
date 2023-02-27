@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>Tính chỉ số cân nặng</h1>
+<label for="can_nang"> Nhập cân nặng:  (kg)</label>
+<input type="text" name="" id="can_nang">
+<br>
+<br>
+<label for="chieu_cao"> Nhập chiều cao:  (m)</label>
+<input type="text" name="" id="chieu_cao">
+<br>
+<br>
+<button onclick="kiem_tra()">Kiểm tra</button>
+
+<p id="result"></p>
+<script>
+    function kiem_tra() {
+        let can_nang = document.getElementById("can_nang").value;
+        let chieu_cao = document.getElementById("chieu_cao").value;
+        let bmi = can_nang / ( Math.pow(chieu_cao, 2) )
+        let result = "";
+    switch((bmi <18.5) ? 1 : ( 18.5<= bmi < 25) ? 2 : (25 <= bmi < 30) ? 3 : (30 <= bmi) ? 4 : 0){
+        case 1:
+            result = "Gầy quá";
+            break;
+        case 2:
+            result = "Bình thường";
+            break;
+        case 3:
+            result = "Thừa cân";
+            break;
+        case 4:
+            result = "Béo phì";
+            break;
+    }
+
+        document.getElementById("result").innerHTML = "Chỉ số BMI là: " + bmi + ". Bạn " + "<b>"+ result + "</b>";
+    }
+</script>
+</body>
+</html>
